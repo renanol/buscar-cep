@@ -1,0 +1,21 @@
+{
+	"ImportPath": "github.com/renanol/buscaCep",
+	"GoVersion": "go1.3.3",
+	"Deps": [
+		{
+			"ImportPath": "code.google.com/p/cascadia",
+			"Comment": "null-31",
+			"Rev": "5d796540e3cb93ea0556c897e6a3c7690f614d35"
+		},
+		{
+			"ImportPath": "github.com/PuerkitoBio/goquery",
+			"Comment": "v0.3.2-64-g0db8a55",
+			"Rev": "0db8a55dc4cdc3e9c2d945fe03066b4cbe63241c"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html",
+			"Comment": "null-230",
+			"Rev": "15d5d0fa7dd8b1ec3f9370cb3082025163881563"
+		}
+	]
+}
