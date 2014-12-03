@@ -21,9 +21,9 @@
         
       </div>
 
-      <form action="/busca-cep" method="post" accept-charset="utf-8" class="form-horizontal" role="form">
+      <form  accept-charset="utf-8" class="form-horizontal" role="form">
 		  <div class="form-group">
-		    <label for="cep" class="col-sm-2 control-label">Email</label>
+		    <label for="cep" class="col-sm-2 control-label">CEP</label>
 		    <div class="col-sm-2">
 		      <input type="text" name="cep" class="form-control" id="cep" placeholder="Digite CEP">
 		    </div>
@@ -31,17 +31,64 @@
 
 	     <div class="form-group">
     <div class="col-sm-offset-2 col-sm-2">
-	    <input type="submit" value="Buscar CEP" class="btn btn-success">
+	    <a href="#" class="btn btn-success" id="buscar-cep">Buscar</a>
     </div>
   </div>
 
 	  </form>
 
-    </div> <!-- /container -->
+<table class="table table-condensed">
+  <thead>
+  	<tr>
+  		<th>Logradouro</th>
+  		<th>Bairro</th>
+  		<th>Localidade</th>
+  		<th>UF</th>
+  		<th>CEP</th>
 
+  	</tr>
+  </thead>
+  <tbody>
+  	
+  </tbody>
+</table>
+    </div> <!-- /container -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+
+		$(function(){
+
+			$("#buscar-cep").on("click",function(){
+
+				$.ajax({
+
+					type:"POST",
+					url:"/busca-cep",
+					data:{ cep : $("#cep").val() }
+
+				}).fail(function(error){
+					console.log(error)
+				}).success(function(data){
+					var conteudo = "<tr>";
+
+					conteudo += "<td>"+data.Logradouro+"</td>";
+					conteudo += "<td>"+data.Bairro+"</td>";
+					conteudo += "<td>"+data.Localidade+"</td>";
+					conteudo += "<td>"+data.Uf+"</td>";
+					conteudo += "<td>"+$("#cep").val() +"</td>"
+					conteudo += "</tr>"
+
+					$("table > tbody ").append(conteudo);
+
+				})	
+			});			
+
+		});
+
+	</script>
 
 </body>
 </html>
