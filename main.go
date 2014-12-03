@@ -25,17 +25,20 @@ const (
 )
 
 func buscaHandler(rw http.ResponseWriter, req *http.Request) {
+
 	cep := req.FormValue("cep")
 
 	fmt.Println(cep)
 
 	doc, err := goquery.NewDocument(URL + cep)
+
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	rw.Header().Set("Content-Type", "application/json")
 	if doc.Find("table").Size() > 0 {
+
 		doc.Find("table").Eq(2).Each(func(i int, s *goquery.Selection) {
 			logradouro := s.Find("td").Eq(0).Text()
 			bairro := s.Find("td").Eq(1).Text()
@@ -44,6 +47,7 @@ func buscaHandler(rw http.ResponseWriter, req *http.Request) {
 			jsonCep, _ := json.Marshal(Cep{logradouro, bairro, localidade, uf})
 			fmt.Fprint(rw, string(jsonCep))
 		})
+
 	} else {
 
 		rw.WriteHeader(404)
