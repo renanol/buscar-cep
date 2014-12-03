@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -24,7 +25,7 @@ const (
 )
 
 func buscaHandler(rw http.ResponseWriter, req *http.Request) {
-	cep := req.URL.Query().Get("cep")
+	cep := req.FormValue("cep")
 
 	fmt.Println(cep)
 
@@ -52,9 +53,15 @@ func buscaHandler(rw http.ResponseWriter, req *http.Request) {
 
 }
 
+func root(rw http.ResponseWriter, req *http.Request) {
+	t, _ := template.ParseFiles("templates/index.html")
+	t.Execute(rw, nil)
+}
+
 func main() {
 
-	http.HandleFunc("/", buscaHandler)
+	http.HandleFunc("/busca-cep", buscaHandler)
+	http.HandleFunc("/", root)
 	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 
 }
