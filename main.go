@@ -6,6 +6,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"log"
 	"net/http"
+	"os"
 )
 
 type Response struct {
@@ -54,6 +55,6 @@ func buscaHandler(rw http.ResponseWriter, req *http.Request) {
 func main() {
 
 	http.HandleFunc("/", buscaHandler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 
 }
