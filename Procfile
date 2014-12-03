@@ -1,1 +1,1 @@
-web: buscacep
+web: buscaCep
