@@ -65,10 +65,9 @@
 
 				$.ajax({
 
-					type:"POST",
-					url:"/busca-cep",
-					data:{ cep : $("#cep").val() }
-
+					type:"GET",
+					url:"/busca-cep/"+$("#cep").val() 
+					
 				}).fail(function(error){
 					console.log(error)
 				}).success(function(data){
