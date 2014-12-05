@@ -1,8 +1,8 @@
 package main
 
 import (
-	"./controllers"
 	"github.com/go-martini/martini"
+	"github.com/renanol/buscaCep/controllers"
 )
 
 func main() {

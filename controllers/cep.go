@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"../models"
 	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/go-martini/martini"
+	"github.com/renanol/buscaCep/models"
 	"log"
 	"net/http"
 )
