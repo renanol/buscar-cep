@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/garyburd/redigo/redis"
 	"github.com/go-martini/martini"
-	"github.com/renanol/buscaCep/models"
+	"github.com/renanol/buscar-cep/models"
 	"log"
 	"net/http"
 )

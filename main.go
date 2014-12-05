@@ -2,12 +2,15 @@ package main
 
 import (
 	"github.com/go-martini/martini"
-	"github.com/renanol/buscaCep/controllers"
+	"github.com/martini-contrib/render"
+	"github.com/renanol/buscar-cep/controllers"
 )
 
 func main() {
 
 	m := martini.Classic()
+
+	m.Use(render.Renderer())
 
 	appCtrl := controllers.App{}
 	cepCtrl := controllers.Cep{}
